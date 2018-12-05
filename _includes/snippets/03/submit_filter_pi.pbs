@@ -3,4 +3,4 @@ $ cat filter.sh
 
 python3 filter_pi_estimates.py pi_estimate_01.data
 
-$ qsub -o filter-pi.log -e filter-pi.err filter.sh
+$ qsub {{ site.pbs_extra_qsub_params }}-o filter-pi.log -e filter-pi.err filter.sh

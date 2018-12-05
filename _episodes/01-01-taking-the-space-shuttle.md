@@ -134,10 +134,10 @@ todays_canteen_menu.pdf                                                100%   28
 
 Lola has a look in the current directory and indeed `todays_canteen_menu_downloaded.pdf`. She opens it with her pdf reader and can tell that it contains indeed the same content as the original one. Rob explains that if she would have used the same name as the destination, i.e. `todays_canteen_menu.pdf`, `scp` would have overwritten her local copy.
 
-To finish, Rob tells Lola that she can also transfer entire directories. He prepared a temporary directory on the cluster for her under `/tmp/this_weeks_canteen_menus`. He asks Lola to obtain a copy of the entire directory onto her laptop.
+To finish, Rob tells Lola that she can also transfer entire directories. He prepared a temporary directory on the cluster for her under `{{ site.canteen_menu_dir }}`. He asks Lola to obtain a copy of the entire directory onto her laptop.
 
 ~~~ 
-$ scp -r lola@{{ site.workshop_login_host }}:/tmp/this_weeks_canteen_menus .
+$ scp -r lola@{{ site.workshop_login_host }}:{{ site.canteen_menu_dir }} .
 ~~~
 {: .bash}
 
@@ -172,7 +172,7 @@ $ ls this_weeks_canteen_menus/
 reveals the transferred files.
 
 ~~~ 
-canteen_menu_day_1.pdf  canteen_menu_day_2.pdf  canteen_menu_day_3.pdf  canteen_menu_day_4.pdf  canteen_menu_day_5.pdf
+day_1.pdf  day_2.pdf  day_3.pdf  day_4.pdf  day_5.pdf  todays_canteen_menu.pdf
 ~~~
 {: .output}
 

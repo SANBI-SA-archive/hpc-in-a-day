@@ -5,4 +5,4 @@ hostname
 date
 sleep 300
 date
-$ qsub -o multiple_commands_and_sleep.log multiple_commands_and_sleep.sh
+$ qsub {{ site.pbs_extra_qsub_params }}-o multiple_commands_and_sleep.log multiple_commands_and_sleep.sh

@@ -1,5 +1,5 @@
 $ cat hostname.pbs
 #!/bin/bash
 
-hsotname
-$ qsub hostname.pbs
+hostname
+$ qsub {{ site.pbs_extra_qsub_params }}hostname.pbs

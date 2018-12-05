@@ -37,9 +37,20 @@ training_site: "https://swcarpentry.github.io/instructor-training"
 
 # this is the scheduler to be used for the workshop
 # possible values: lsf, slurm, pbs
-workshop_scheduler: "slurm"
-workshop_login_host: "cray-1"
-workshop_shared_fast_filesystem: "/fastfs"
+workshop_scheduler: "pbs"
+workshop_login_host: "lengau.chpc.ac.za"
+workshop_shared_fast_filesystem: "/mnt/lustre/users"
+python_modulename: "chpc/python/3.6.1_gcc-6.3.0"
+python_env_module_command: "$ module load chpc/python/3.6.1_gcc-6.3.0\n"
+python_version: "3.6.1"
+kernprof_command: "kernprof"
+gnu_parallel_env_module_command: "module load chpc/gnu/parallel-20180622"
+# location on the login host of the canteen menu collection
+canteen_menu_dir: "/home/student99/this_weeks_canteen_menus/"
+# some extra options for the snippets
+
+# add a trailing space if you use this
+pbs_extra_qsub_params: "-P WCHPC -q R1676493 "
 
 # Surveys.
 pre_survey: "https://www.surveymonkey.com/r/swc_pre_workshop_v1?workshop_id="

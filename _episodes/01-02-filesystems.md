@@ -225,7 +225,7 @@ $ ls -F this_weeks_canteen_menus
 {: .bash}
 
 ~~~
-canteen_menu_day_1.pdf  canteen_menu_day_2.pdf  canteen_menu_day_3.pdf  canteen_menu_day_4.pdf  canteen_menu_day_5.pdf
+day_1.pdf  day_2.pdf  day_3.pdf  day_4.pdf  day_5.pdf  todays_canteen_menu.pdf
 ~~~
 {: .output}
 
@@ -284,7 +284,7 @@ $ ls -F
 {: .bash}
 
 ~~~
-canteen_menu_day_1.pdf  canteen_menu_day_2.pdf  canteen_menu_day_3.pdf  canteen_menu_day_4.pdf  canteen_menu_day_5.pdf
+day_1.pdf  day_2.pdf  day_3.pdf  day_4.pdf  day_5.pdf  todays_canteen_menu.pdf
 ~~~
 {: .output}
 
@@ -343,7 +343,7 @@ creating, deleting, moving and renaming files and folders.
 Let's change working directory to the `this_weeks_canteen_menus`:
 
 ~~~
-$ cd `this_weeks_canteen_menus`
+$ cd this_weeks_canteen_menus
 ~~~
 {: .bash}
 

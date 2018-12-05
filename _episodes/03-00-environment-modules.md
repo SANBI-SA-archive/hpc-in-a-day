@@ -204,12 +204,12 @@ fftw/3.3.4                  line_profiler/trunk         maven/3.0.5
 The structure of each entry is usually the same `<software>/<version>`, where `software` can be anything from a simple application to a larger framework. To help typing, issuing `module av` is enough. To make an application available, the `load` or `add` verb can be used interchangeably. In a new terminal window do:
 
 ~~~
-$ module load python/3.6.5
+$ module load {{ site.python_modulename }}
 ~~~
 {: .bash}
 
 ~~~
-python version 3.6.5 for x86_64 architecture loaded.
+python version {{ site.python_version }} for x86_64 architecture loaded.
 ~~~
 {: .output}
 
@@ -221,7 +221,7 @@ $ python --version
 {: .bash}
 
 ~~~
-Python 3.6.5
+Python {{ site.python_version }}
 ~~~
 {: .output}
 
@@ -240,7 +240,7 @@ Python 3.6.5
 The real hallmark of the module system comes with the facility to switch off applications again by invoking:
 
 ~~~
-$ module unload python/3.6.5
+$ module unload {{ site.python_modulename }}
 ~~~
 {: .bash}
 
@@ -264,7 +264,7 @@ Python 2.7.15
 > ~~~~~
 > $ source bin/activate
 > ~~~~~
-> { .bash }
+> {: .bash }
 > 
 > "... This will change your $PATH so its first entry is the virtualenv’s bin/ directory. (You have to use source because it changes your shell environment in-place.)"
 > 
@@ -274,8 +274,37 @@ Python 2.7.15
 > $ conda create -n our_workshop python=3.6 numpy mpi4py line_profiler
 > $ source activate our_workshop
 > ~~~~~
-> { .bash }
+> {: .bash }
 >
 > The last line above changes the environment of the current shell, so that `python=3.6 numpy mpi4py line_profiler` are available.
+{: .callout }
+
+> ## Don't install software from the head node
+> 
+> The `conda create` example does software installation. This is a resource intensive operation which
+> should not be run on the head node. 
+> 
+> An alternative to running the install on the head node is to submit the `conda create` command
+> or similar in a script that you submit to the cluster scheduler. Software installation can, however,
+> involve testing and commands that are not entirely known beforehand. This kind of a task is a 
+> good candidate for an *interactive job*, but only if your cluster nodes have Internet access.
+> Not all do.
+>
+> An interactive job (or session) is controlled by the scheduler but which runs an interactive shell,
+> where the user can run commands interactively. This session can be used for tasks such as software
+> installation.
+>
+> ~~~~~
+> {% include /snippets/03/submit_interactive_job.{{ site.workshop_scheduler }} %}
+> ~~~~~
+> {: .bash}
+>
+> ~~~~~
+> {% include /snippets/03/interactive_job_output.{{ site.workshop_scheduler }} %}
+> ~~~~~
+> {: .output }
+>
+> When starting an interactive job always remember to specify the wall time so that you can be sure to 
+> not claim a node for longer than you need. And logout as soon as your work is finished.
 {: .callout }
 

@@ -5,4 +5,4 @@ $ cat map_step.sh
 
 cd $PBS_O_WORKDIR
 python3 filter_pi_estimates.py pi_estimate_${PBS_ARRAY_INDEX}.data
-$ qsub map_step.sh
+$ qsub {{ site.pbs_extra_qsub_params }}map_step.sh

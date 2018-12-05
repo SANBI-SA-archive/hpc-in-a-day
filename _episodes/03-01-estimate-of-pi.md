@@ -60,7 +60,7 @@ For generating pseudo-random numbers, we sample the uniform probability distribu
 Lola finishes writing the pi estimation and comes up with a [small python script]({{ page.root }}/code/03_parallel_jobs/serial_numpi.py), that she can launch from the command line:
 
 ~~~
-$ python3 ./serial_numpi.py 1000000000
+{{ site.python_env_module_command }}$ python3 ./serial_numpi.py 1000000000
 ~~~
 {: .bash}
 
@@ -76,7 +76,7 @@ She must admit that the application takes quite long to finish. Yet another reas
 
 Before venturing out and trying to accelerate a program, it is utterly important to find the hot spots of it by means of measurements. For the sake of this tutorial, we use the [line_profiler](https://github.com/rkern/line_profiler) of python. Your language of choice most likely has similar utilities.
 
-If need be, to install the profiler, please issue the following command:
+If need be, to install the profiler, please issue the following command (you probably need superuser rights to do this):
 ~~~
 $ pip3 install line_profiler
 ~~~
@@ -133,7 +133,7 @@ def main():
 Let's save this to `serial_numpi_annotated.py`. After this is done, the profiler is run with a reduced input parameter that does take only about 2-3 seconds:
 
 ~~~
-$ kernprof-3 -l ./serial_numpi_annotated.py 50000000
+$ {{ site.kernprof_command }} -l ./serial_numpi_annotated.py 50000000
 [serial version] required memory 572.205 MB
 [serial version] pi is 3.141728 from 50000000 samples
 Wrote profile results to serial_numpi_annotated.py.lprof
@@ -184,7 +184,7 @@ def main():
 And run the same cycle of record and report:
 
 ~~~
-$ kernprof-3 -l ./serial_numpi_annotated.py 50000000
+$ {{ kernprof_command }} -l ./serial_numpi_annotated.py 50000000
 [serial version] required memory 572.205 MB
 [serial version] pi is 3.141728 from 50000000 samples
 Wrote profile results to serial_numpi_annotated.py.lprof
@@ -225,7 +225,7 @@ def inside_circle(total_count):
 And run the profiler again:
 
 ~~~
-$ kernprof-3 -l ./serial_numpi_annotated.py 50000000
+$ {{ kernprof_command }} -l ./serial_numpi_annotated.py 50000000
 [serial version] required memory 572.205 MB
 [serial version] pi is 3.141728 from 50000000 samples
 Wrote profile results to serial_numpi_annotated.py.lprof

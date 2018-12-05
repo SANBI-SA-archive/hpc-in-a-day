@@ -91,8 +91,8 @@ Individual commands are fine, but Lola knows from experience that very often her
 >
 > You have several options: 
 > 1. run a editor inside the `ssh` session that you opened to work on the cluster. Note that you can only run applications which the HPC administrator has installed (mostly `vi`/`vim`, `emacs`, `nano` or `pico` are programs commonly installed on HPC machines).
-> 2. connect to the cluster with `ssh` using the ssh `-X` switch, if done so, you can open editors like `emacs`, `nedit`, `gedit`, ... that are capable of spinning up a GUI (careful though, the GUI contents need to be transmitted through the network from the cluster to your workstation or laptop and vice verse, so in case you have a poor network connection, this approach can be visually painful)
-> 3. use remote editing capabilities of your preferred editor or IDE (e.g. emacs and vim both have a built-in packages for this, check your preferred IDE manual for details)
+> 3. use remote editing capabilities of your preferred editor or IDE (e.g. vim, atom and vscode all have packages that allow for remote editing, check your IDE manual or search the web for details)
+> 3. if your cluster allows it, connect to the cluster with `ssh` using the ssh `-X` switch, if done so, you can open editors like `emacs`, `nedit`, `gedit`, ... that are capable of spinning up a GUI (careful though, the GUI contents need to be transmitted through the network from the cluster to your workstation or laptop and vice verse, so in case you have a poor network connection, this approach can be visually painful)
 > 4. have a folder of your remote host mounted on your laptop (the details depend on the remote cluster and you should get in touch with the admin to find out what technologies are available), edit the files inside this folder (most of the time they are updated to the cluster in real-time) and launch the applications from your `ssh` session
 
 

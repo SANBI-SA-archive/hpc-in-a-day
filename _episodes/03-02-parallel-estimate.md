@@ -57,7 +57,7 @@ keypoints:
 Having the profiling data, our estimate of pi is a valuable resource.
 
 ~~~~~
-$ kernprof-3 -l ./serial_numpi_annotated.py 50000000
+$ {{ site.kernprof_command }} -l ./serial_numpi_annotated.py 50000000
 [serial version] required memory 572.205 MB
 [serial version] pi is 3.141728 from 50000000 samples
 Wrote profile results to serial_numpi_annotated.py.lprof

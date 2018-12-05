@@ -3,4 +3,4 @@ $ cat multiple_commands.sh
 
 hostname
 date
-$ qsub -o multiple_commands.log -e multiple_commands.err multiple_commands.sh
+$ qsub {{ site.pbs_extra_qsub_params }}-o multiple_commands.log -e multiple_commands.err multiple_commands.sh

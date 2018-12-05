@@ -167,9 +167,61 @@ averaged value of pi from 224 estimates : 3.141337
 ~~~
 {: .output}
 
+> ## Parallel the shell commands ways
+> 
+> As illustrated above, we can use shell commands to search for the Pi estimates. With the
+> [GNU parallel](https://www.gnu.org/software/parallel/) tool we can parallelise shell commands. 
+> The `parallel` command takes a list of inputs and starts a command for each. Lola creates a 
+> shell script `parallel_search.sh` to search for Pi estimates:
+>
+> ~~~~
+$ cat parallel_search.sh
+> #!/bin/bash
+> 
+> {{ site.gnu_parallel_env_module_command }}
+> ls pi_estimate_*.data |parallel -j $NCPUS egrep "^3.1" {}
+>
+> $ qsub {{ site.pbs_extra_qsub_params }}-l select=1:ncpus=24 -l walltime=00:15:00 parallel_search.sh
+> ~~~~
+> {: .bash}
+>
+> In this script, `parallel` starts a job for each of the CPUs reserved by the scheduler. The command
+> contains a *wildcard*, `{}`, into which is substituted by the filenames from the `ls` command. 
+>
+> In addition to starting many jobs on a single machine, the `parallel` command is also able to use
+> multiple machines, with jobs distributed using `ssh`. Here is an updated `parallel_search.sh` 
+> script with multi-machine support.
+>
+> ~~~~
+> $ cat parallel_search.sh
+> #!/bin/bash
+> NODEFILE=$WD/nodes.txt
+> cat ${PBS_NODEFILE} | sort | uniq > $NODEFILE
+> 
+> {{ site.gnu_parallel_env_module_command }}
+> ls pi_estimate_*.data |parallel --env PATH --sshloginfile ${NODEFILE} --sshdelay 0.1 egrep "^3.1" {}
+>
+> $ qsub {{ site.pbs_extra_qsub_params }}-l select=2:ncpus=24 -l walltime=00:15:00 parallel_search.sh
+> ~~~~
+> {: .bash}
+>
+> Finally, `python` can be used to *reduce* the results to an average:
+> ~~~~
+$ cat parallel_search.sh
+> #!/bin/bash
+> 
+> {{ site.gnu_parallel_env_module_command }}
+> ls pi_estimate_*.data |parallel -j $NCPUS egrep "^3.1" {} |\
+>     python -c 'import sys; estimates=[float(l) for l in sys.stdin]; print(sum(estimates)/len(estimates))'
+>
+> $ qsub {{ site.pbs_extra_qsub_params }}-l select=1:ncpus=24 -l walltime=00:15:00 parallel_search.sh
+> ~~~~
+> {: .bash}
+> 
+{: .challenge}
 > ## Occurance of 2
 >
-> Dublicate the steps outlined in this section. Before doing the reduce step, filter out only those estimates of pi that end on an even number. For example, `3.141337` ends on `7` and would be discarded. `3.141332` ends on `2` and hence would be used for the grand average.
+> Duplicate the steps outlined in this section. Before doing the reduce step, filter out only those estimates of pi that end on an even number. For example, `3.141337` ends on `7` and would be discarded. `3.141332` ends on `2` and hence would be used for the grand average.
 >
 {: .challenge}
 

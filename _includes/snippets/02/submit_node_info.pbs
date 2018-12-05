@@ -5,4 +5,4 @@ FILENAME=/tmp/`hostname`_info.log
 
 cat /proc/cpuinfo  > ${FILENAME}
 
-$ qsub -l walltime=00:00:01 node_info.sh
+$ qsub {{ site.pbs_extra_qsub_params }}-l walltime=00:00:01 node_info.sh
