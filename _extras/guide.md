@@ -11,7 +11,7 @@ This document tries to describe what preparations are required of instructors to
 
 ### Section 1, Taking the space shuttle
 
-At some point a folder named `this_weeks_canteen_menus` will be needed under `/tmp/this_weeks_canteen_menus` on the login node. Make sure before the lesson, that this folder is present. [/home/rob/this_weeks_canteen_menus](filesystem/home/rob/this_weeks_canteen_menus) of this material contains synthesized pdfs of a computerized canteen if you wish. You can use either these or prepare the menu of the canteen as single pdf files per day you'll go for the workshop into in this folder.
+At some point a folder named `{{ site.canteen_menu_dir }}` will be needed on the login node. Make sure before the lesson, that this folder is present. In this material [filesystem/home/rob/this_weeks_canteen_menus](filesystem/home/rob/this_weeks_canteen_menus) contains synthesized pdfs of a computerized canteen if you wish. You can use either these or prepare the menu of the canteen as single pdf files per day you'll go for the workshop into in this folder.
 
 ### Section 2, Navigating Files and Directories
 

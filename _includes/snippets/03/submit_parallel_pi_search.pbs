@@ -1,6 +1,6 @@
-$ cat parallel_search.sh
+> $ cat parallel_search.sh
 > #!/bin/bash
 > 
 > {{ site.gnu_parallel_env_module_command }}
-> ls pi_estimate_*.data |parallel egrep "^3.1" {}
+> ls pi_estimate_*.data |parallel egrep "^3.1" \{\}
 > $ qsub {{ site.pbs_extra_qsub_params }}-l select=1:ncpus=24 -l walltime=00:15:00 parallel_search.sh
